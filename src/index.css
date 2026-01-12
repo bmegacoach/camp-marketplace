@@ -1,0 +1,184 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-white/[0.1];
+  }
+  
+  body {
+    @apply bg-bg-base text-text-primary font-sans antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-bg-elevated;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-accent-primary-muted rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-accent-primary;
+  }
+}
+
+@layer components {
+  /* Button Styles */
+  .btn-primary {
+    @apply px-6 py-3 bg-accent-primary text-white font-semibold rounded-sm 
+           hover:bg-accent-primary-hover hover:shadow-glow-accent
+           transition-all duration-fast;
+  }
+  
+  .btn-secondary {
+    @apply px-6 py-3 bg-bg-elevated border border-white/[0.1] text-text-primary font-semibold rounded-sm
+           hover:bg-bg-spotlight hover:border-white/[0.15]
+           transition-all duration-fast;
+  }
+  
+  .btn-ghost {
+    @apply px-4 py-2 text-text-secondary font-medium rounded-sm
+           hover:bg-bg-elevated hover:text-text-primary
+           transition-all duration-fast;
+  }
+
+  /* Card Styles */
+  .card {
+    @apply bg-bg-surface border border-subtle rounded-md shadow-card
+           transition-all duration-normal;
+  }
+
+  .card-hover {
+    @apply hover:bg-bg-elevated hover:border-moderate hover:-translate-y-1 hover:shadow-card-hover;
+  }
+
+  /* Input Styles */
+  .input-field {
+    @apply w-full bg-bg-surface border border-subtle rounded-sm px-4 py-3
+           text-text-primary placeholder-text-muted
+           focus:outline-none focus:border-accent-primary focus:ring-1 focus:ring-accent-primary
+           transition-all duration-fast;
+  }
+
+  /* Badge Styles */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-caption font-medium;
+  }
+
+  .badge-rank {
+    @apply border transition-transform duration-fast hover:scale-110;
+  }
+
+  /* Metric Styles */
+  .metric-positive {
+    @apply text-semantic-success;
+  }
+
+  .metric-negative {
+    @apply text-semantic-error;
+  }
+
+  /* Glow Effects */
+  .glow-accent {
+    @apply shadow-glow-accent;
+  }
+
+  .glow-success {
+    @apply shadow-glow-success;
+  }
+
+  /* Layout Utilities */
+  .container-main {
+    @apply max-w-screen-2xl mx-auto px-xl;
+  }
+
+  .section-spacing {
+    @apply py-2xl;
+  }
+
+  /* Link Styles */
+  .link-primary {
+    @apply text-accent-primary hover:text-accent-primary-hover transition-colors duration-fast;
+  }
+
+  /* Loading Animation */
+  .skeleton {
+    @apply bg-bg-elevated animate-pulse rounded-md;
+  }
+
+  /* Focus States */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-accent-primary focus:ring-offset-2 focus:ring-offset-bg-base;
+  }
+}
+
+@layer utilities {
+  /* Text Gradient */
+  .text-gradient {
+    @apply bg-gradient-to-r from-accent-primary to-accent-primary-hover bg-clip-text text-transparent;
+  }
+
+  /* Backdrop Blur */
+  .backdrop-blur-nav {
+    backdrop-filter: blur(12px);
+  }
+
+  /* Subtle Border */
+  .border-subtle {
+    @apply border border-white/[0.06];
+  }
+
+  .border-moderate {
+    @apply border border-white/[0.1];
+  }
+
+  .border-strong {
+    @apply border border-white/[0.15];
+  }
+
+  /* Price Flash Animation */
+  @keyframes flash-success {
+    0%, 100% { background-color: transparent; }
+    50% { background-color: rgba(16, 185, 129, 0.2); }
+  }
+
+  @keyframes flash-error {
+    0%, 100% { background-color: transparent; }
+    50% { background-color: rgba(239, 68, 68, 0.2); }
+  }
+
+  .flash-success {
+    animation: flash-success 400ms ease-out;
+  }
+
+  .flash-error {
+    animation: flash-error 400ms ease-out;
+  }
+
+  /* Urban Background Animations */
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-15px) rotate(3deg); }
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+}

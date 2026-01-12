@@ -1,0 +1,15 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Sponsors collection - allow create for anyone, read for authenticated users
+    match /sponsors/{document=**} {
+      allow create: if true;
+      allow read: if request.auth != null;
+    }
+    
+    // Default deny for other collections
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
